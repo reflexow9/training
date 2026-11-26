@@ -14,15 +14,18 @@ int main() {
   //   printf("%d", 5);
   // }
 
+  long long mod = 1000000007;
   long long f[n + 1], p[n + 1];
 
+  f[0] = 1;
   f[1] = 1;
   f[2] = 2;
   p[2] = 1;
+  p[0] = 1;
 
   for (int i = 3; i <= n; i++) {
-    f[i] = f[i - 1] + f[i - 2] + 2 * p[i - 1];
-    p[i] = (f[i - 2] + p[i - 1]);
+    f[i] = (f[i - 1] + f[i - 2] + 2 * p[i - 1]) % mod;
+    p[i] = (f[i - 2] + p[i - 1]) % mod;
   }
 
   printf("%lld\n", f[n]);
